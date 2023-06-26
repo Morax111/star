@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>被删除的员工信息表</title>
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    table {
+      border-collapse: collapse;
+      text-align: center;
+    }
+    
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>编号</th>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>性别</th>
+          <th>部门</th>
+          <th>删除原因</th>
+        </tr>
+      </thead>
+      <tbody id="deletedEmployeesTableBody"></tbody>
+    </table>
+  </div>
+
+  <script>
+    // 定义被删除的员工信息数据
+    const deletedEmployees = [
+      { 编号: 1, 姓名: "张三", 年龄: 25, 性别: "男", 部门: "销售部", 删除原因: "合同到期" },
+      { 编号: 2, 姓名: "李四", 年龄: 30, 性别: "女", 部门: "人力资源部", 删除原因: "岗位调整" },
+      { 编号: 3, 姓名: "王五", 年龄: 28, 性别: "男", 部门: "研发部", 删除原因: "公司裁员" },
+      { 编号: 4, 姓名: "赵六", 年龄: 32, 性别: "女", 部门: "财务部", 删除原因: "业务调整" },
+      { 编号: 5, 姓名: "钱七", 年龄: 27, 性别: "男", 部门: "市场部", 删除原因: "个人辞职" }
+    ];
+
+    // 填充被删除的员工信息表格
+    const tableBody = document.getElementById("deletedEmployeesTableBody");
+    deletedEmployees.forEach(employee => {
+      const row = document.createElement("tr");
+      Object.values(employee).forEach(value => {
+        const cell = document.createElement("td");
+        cell.textContent = value;
+        row.appendChild(cell);
+      });
+      tableBody.appendChild(row);
+    });
+  </script>
+</body>
+</html>
